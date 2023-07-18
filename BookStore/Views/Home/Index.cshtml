@@ -1,0 +1,98 @@
+﻿﻿@{
+    ViewData["Title"] = "Book";
+}
+@model IEnumerable<Book>
+<div class="text-center">
+    <h2 class="display-4">Books</h2>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Price</th>
+                <th>Order</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Id</td>
+                    <td>@book.Title</td>
+                    <td>@book.Genre</td>
+                    <td>@book.Author</td>
+                    <td>@book.Year</td>
+                    <td>@book.Price</td>
+                    <td><a class="btn btn-success" href="/Home/Order/@book.Id">Order</a></td>
+                    <td><a class="btn btn-warning" href="/Home/Edit/@book.Id">Edit</a></td>
+                    <td><a class="btn btn-danger" href="/Home/Delete/@book.Id">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/Home/Add" class="btn btn-outline-success btn-lg">Add book</a>
+</div>
+
+
+@*@model IEnumerable<Book>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script type="text/javascript">
+    <text>
+    import React from 'react';
+    const BookList = ({ books }) => {
+        return (
+            <div class = "text-center" >
+            <h2 class ="display-4" > Books < /h2>
+                < table className = "table table-dark" >
+                    <thead>
+                    <tr>
+                    <th scope="col" > ID < /th>
+                        < th > Title < /th>
+                        < th > Genre < /th>
+                        < th > Author < /th>
+                        < th > Year < /th>
+                        < th > Price < /th>
+                        < th > Action < /th>
+                        < /tr>
+                        < /thead>
+                        < tbody >
+                    {
+                        books.map((book) => (
+                            <tr key= { book.id } >
+                            <td>{ book.id } < /td>
+                            < td > { book.title } < /td>
+                            < td > { book.genre } < /td>
+                            < td > { book.author } < /td>
+                            < td > { book.year } < /td>
+                            < td > { book.price } < /td>
+                            < td >
+                            <a className="btn btn-success" href = {`/Home/Order/${book.id}`} >
+                        Order
+                        < /a>
+                        < a className = "btn btn-warning" href = {`/Home/Edit/${book.id}`
+    }>
+        Edit
+        < /a>
+        < a className = "btn btn-danger" href = {`/Home/Delete/${book.id}`}>
+            Delete
+            < /a>
+            < /td>
+            < /tr>
+                        ))}
+    </tbody>
+        < /table>
+        < a href = "/Home/Add" className = "btn btn-outline-success btn-lg" >
+            Add book
+                < /a>
+                < /div>
+        );
+    };
+
+    export default BookList;
+    </text>
+</script>*@

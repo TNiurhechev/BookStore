@@ -1,0 +1,46 @@
+﻿@using BookStore.ViewModels
+﻿@{
+    ViewData["Title"] = "Book";
+}
+@model AuthorViewModel
+<div class="text-center">
+    <h2 class="display-4">Authors</h2>
+    @foreach(var author in Model.Authors)
+    {
+        <h2 class="display-6">@author.Name</h2>
+        <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Price</th>
+                <th>Order</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model.Books)
+            {
+                    @if (book.Author.Equals(author.Name))
+                    {
+                        <tr>
+                            <td>@book.Id</td>
+                            <td>@book.Title</td>
+                            <td>@book.Genre</td>
+                            <td>@book.Author</td>
+                            <td>@book.Year</td>
+                            <td>@book.Price</td>
+                            <td><a class="btn btn-success" href="/Home/Order/@book.Id">Order</a></td>
+                            <td><a class="btn btn-warning" href="/Home/Edit/@book.Id">Edit</a></td>
+                            <td><a class="btn btn-danger" href="/Home/Delete/@book.Id">Delete</a></td>
+                        </tr>
+                    }
+            }
+        </tbody>
+    </table>
+    }
+</div>
